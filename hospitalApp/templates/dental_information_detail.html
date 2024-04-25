@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .field-description,
+  .field-value {
+    margin-bottom: 5px; /* Adjust this value as needed */
+  }
+</style>
+  <div class="container mt-5">
+    <h2>Dental Information Detail</h2>
+    <div class="card">
+      <div class="card-body">
+        {% for info in dental_info %}
+        <div class="row">
+          <div class="col-md-8">
+            <p><strong>Patient Name:</strong> {{ info.patient_name }}</p>
+          </div>
+          <div class="col-md-4">
+            <p><strong>Last Dental Visit:</strong>{{ info.last_dental_visit|date:"M. d, Y" }}, {{ info.last_dental_visit|time:"g:i a"}}</p>
+          </div>
+        </div>  
+        <hr>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Dental Procedures:</strong> </p>
+            <p class="field-value">{{ info.dental_procedures }}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="field-description"><strong>Brushing Frequency:</strong> </p>
+            <p class="field-value">{{ info.brushing_frequency }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Flossing Frequency:</strong> </p>
+            <p class="field-value">{{ info.flossing_frequency }}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="field-description"><strong>Toothpaste Used:</strong> </p>
+            <p class="field-value">{{ info.toothpaste_used }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Mouthwash Used:</strong> </p>
+            <p class="field-value">{{ info.mouthwash_used }}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="field-description"><strong>Experiencing Discomfort:</strong> </p>
+            <p class="field-value">{{ info.experiencing_discomfort }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <p class="field-description"><strong>Sensitivity Description:</strong></p>
+          <p class="field-value">{{ info.sensitivity_description }}</p>
+        </div>
+          <div class="col-md-6">
+          <p class="field-description"><strong>Gum Bleeding:</strong></p>
+          <p class="field-value">{{ info.gum_bleeding }}</p>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Gum Swelling:</strong></p>
+            <p class="field-value">{{ info.gum_swelling }}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="field-description"><strong>Gum Tenderness:</strong></p>
+            <p class="field-value">{{ info.gum_tenderness }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Gum Changes Description:</strong></p>
+            <p class="field-value">{{ info.gum_changes_description }}</p>
+          </div>
+            <div class="col-md-6">
+            <p class="field-description"><strong>Sugary Food Frequency:</strong></p>
+            <p class="field-value">{{ info.sugary_food_frequency }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Acidic Food Frequency:</strong></p>
+            <p class="field-value">{{ info.acidic_food_frequency }}</p>
+          </div>
+            <div class="col-md-6">
+            <p class="field-description"><strong>Impacting Habits:</strong></p>
+            <p class="field-value">{{ info.impacting_habits }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Medications Impacting Oral Health:</strong></p>
+            <p class="field-value">{{ info.medications_impacting_oral_health }}</p>
+          </div>
+            <div class="col-md-6">
+            <p class="field-description"><strong>Medical Conditions Impacting Dental Care:</strong></p>
+            <p class="field-value">{{ info.medical_conditions_impacting_dental_care }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Cosmetic Interests:</strong></p>
+            <p class="field-value">{{ info.cosmetic_interests }}</p>
+          </div>
+            <div class="col-md-6">
+            <p class="field-description"><strong>Oral Care Guidance:</strong></p>
+            <p class="field-value">{{ info.oral_care_guidance }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="field-description"><strong>Routine Checkup Due:</strong></p>
+            <p class="field-value">{{ info.routine_checkup_due }}</p>
+          </div>
+        </div>
+          <hr>
+          <hr>
+        {% endfor %}
+        <a href="{% url 'dental-info-list' %}" class="btn btn-secondary">Back to Dental Information List</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Patient Detail</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</li>
+                <li class="list-group-item"><strong>Body Weight:</strong> {{ patient.body_weight }}</li>
+                <li class="list-group-item"><strong>Blood Pressure:</strong> {{ patient.blood_pressure }}</li>
+                <li class="list-group-item"><strong>Pressure:</strong> {{ patient.pressure }}</li>
+                <!-- Add more fields as needed -->
+            </ul>
+            <a href="{% url 'patient-list' %}" class="btn btn-secondary mt-3">Back to Patient List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

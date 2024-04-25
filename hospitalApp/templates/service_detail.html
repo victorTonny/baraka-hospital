@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container{
+        padding-top: 40px;
+    }
+    .crd-t{
+        font-size: 30px;
+    }
+    .card{
+        border-radius: 10px;
+    }
+</style>
+  <div class="container col-md-6">
+    <div class="card">
+        <div class="card-body">
+          <p class="card-title crd-t text-center">Service Details</p>
+          <p class="card-text"><strong>Service Name:</strong> {{ service.name }}</p>
+          <p class="card-text"><strong>Description:</strong> {{ service.description }}</p>
+          <p class="card-text"><strong>Price:</strong> {{ service.price }} Tsh</p>
+          <a href="{% url 'service-list' %}" class="mb-1 btn btn-primary">Back to Services</a>
+          <a href="{% url 'service-update' service.id %}" class="mb-1 btn btn-secondary">Edit Service</a>
+          <a href="{% url 'service-delete' service.id %}" class="mb-1 btn btn-danger">Delete Service</a>
+        </div>
+      </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    
+
+    .welcome-section {
+        flex: 8;
+    }
+
+    .services-section {
+        flex: 5;
+    }
+
+    /* Add custom styling for the cards */
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    .p-font{
+        font-size: 30px;
+        text-align: center;
+    }
+    .pp-font{
+        text-align: center;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <section class="col-md-7 pb-1 welcome-section pt-5" id="welcome">
+            <div class="card">
+                <div class="card-body">
+                    <p class="p-font">Welcome to Baraka Hospital</p>
+                    <p class="pp-font">We are dedicated to providing high-quality healthcare services.</p>
+                    <!-- <img src="{% static 'images/b.jpg' %}" alt="Welcome Image" class="img-fluid" style="width: 100%;"> -->
+                    <img src="{% static 'images/barakalogo.png' %}" alt="Welcome Image" class="img-fluid">
+                    <!-- Add any welcome section content here -->
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="col-md-7 services-section pt-5" id="services">
+            <div class="card">
+                <div class="card-body">
+                    <p class="p-font">Our Services</p>
+                    {% if services %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Service Price</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for service in services %}
+                            <tr>
+                                <td>{{ service.name }}</td>
+                                <td> {{ service.price }} Tsh</td>
+                                <td><a href="{% url 'service-detail' service.id %}"><i class="fa-solid fa-eye" style="color: #2268e2;"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No services available at the moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        
+        
+    </div>
+</div>
+{% endblock %}

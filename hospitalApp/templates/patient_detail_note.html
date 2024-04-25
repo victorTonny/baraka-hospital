@@ -1,0 +1,12 @@
+{% block content %}
+<div class="container pt-5">
+    <!-- patient_detail.html -->
+
+    <h2>Patient Notes</h2>
+    {% for note in patient_notes %}
+    <p>{{ note.note_date }} - {{ note.symptoms }}</p>
+    {% endfor %}
+
+    <a href="{% url 'patient-create-note' patient_id=patient_id %}">Create Note</a>
+</div>
+{% endblock %}

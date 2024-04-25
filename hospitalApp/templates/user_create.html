@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .create-user {
+    padding-top: 60px;
+  }
+
+  /* Add additional CSS to style the buttons */
+  .create-buttons {
+    margin-top: 20px;
+  }
+</style>
+<div class="container create-user col-md-5">
+  <h2>Create User</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name" name="first_name" required>
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name" name="last_name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+      <div class="form-group">
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" required>
+      </div>
+      <div class="form-group">
+        <label for="password2">Conform Password</label>
+        <input type="password" class="form-control" id="password2" name="password2" required>
+      </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" href="{% url 'user-list' %}">Back to User List</a>
+  </form>
+</div>
+{% endblock %}

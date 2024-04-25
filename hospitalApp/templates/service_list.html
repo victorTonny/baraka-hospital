@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #d7d8da;
+        padding-top: 90px;
+    }
+
+    .welcome-section {
+        flex: 8;
+    }
+
+    .services-section {
+        flex: 5;
+    }
+
+    /* Add custom styling for the cards */
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    .p-font{
+        font-size: 30px;
+        text-align: center;
+    }
+    .tb-header{
+        text-align: center;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <section class="col-md-12 services-section" id="services">
+            <div class="card">
+                <div class="card-body">
+                    <p class="p-font">Our Services</p>
+                    {% if services %}
+                    <table class="table">
+                        <thead>
+                            <tr class="tb-header">
+                                <th>#</th>
+                                <th>Service Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for service in services %}
+                            <tr class="tb-header">
+                                <td>{{ service.id }}</td>
+                                <td>{{ service.name }}</td>
+                                <td>{{ service.description }}</td>
+                                <td>{{ service.price }} Tsh</td>
+                                <td><a href="{% url 'service-detail' service.id %}"><i class="fa-solid fa-eye" style="color: #2268e2;"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No services available at the moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        
+        
+    </div>
+</div>
+{% endblock %}

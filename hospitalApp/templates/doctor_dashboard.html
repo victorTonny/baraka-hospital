@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .patient-list {
+    text-align: center;
+    color: dodgerblue;
+  }
+
+  .view-align {
+    text-align: end;
+    text-decoration: none;
+    color: white;
+  }
+
+  .img-card {
+    padding-top: 45px;
+    margin-left: 20px;
+  }
+  .list-font-weight{
+    font-size: 30px;
+  }
+</style>
+<div class="container-fluid doctor-dash">
+  {% if user.is_authenticated and user.specialist.area_of_specialist == 'Doctor' %}
+    <p class="list-font-weight">Welcome, Dr {{ user.first_name|upper }} {{ user.last_name|upper }}.</p>
+  {% endif %}
+
+  <br>
+  <div class="row">
+    <div class="col-md-3 mb-2">
+      <div class="card bg-success">
+        <div class="card-body">
+          <h5 class="card-title text-white">Treated Patients</h5>
+          <h5 class="card-title text-white">Total: {{ treated_patients_count }} </h5>
+          <a class="view-align" href="">
+            <h5>view</h5>
+          </a>
+          <!-- Add content for approved patients -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-2">
+      <div class="card bg-primary">
+        <div class="card-body">
+          <h5 class="card-title text-white">Appointments</h5>
+          <h5 class="card-title text-white">Total: {{ appointments_count }} </h5>
+          <a class="view-align" href="{% url 'appointment-list' %}">
+            <h5>view</h5>
+          </a>
+          <!-- Add content for appointments -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-2">
+      <div class="card bg-warning">
+        <div class="card-body">
+          <h5 class="card-title text-white">Pending Patients</h5>
+          <h5 class="card-title text-white">Total: {{ pending_patients_count }} </h5>
+          <a class="view-align" href="{% url 'patient-list' %}">
+            <h5>view</h5>
+          </a>
+          <!-- Add content for rejected patients -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-2">
+      <div class="card bg-danger">
+        <div class="card-body">
+          <h5 class="card-title text-white">Rejected Patients</h5>
+          <h5 class="card-title text-white">Total: 0 </h5>
+          <a class="view-align" href="">
+            <h5>view</h5>
+          </a>
+          <!-- Add content for rejected patients -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container img-card">
+    <p class="list-font-weight">Treated Patients List</p>
+    <div class="row">
+      {% for patient in treated_patients %}
+        <div class="col-md-4 mb-4">
+          <div class="card  ">
+            <div class="card-body">
+              <p class="card-title">Patient: {{ patient.first_name }} {{ patient.last_name }}</p>
+              <p class="card-text">Treated by: {{ patient.treated_by.first_name }} {{ patient.treated_by.last_name }}</p>
+              <p class="card-text">Treatment done: {{ patient.registration_time }}</p>
+              <div style="text-align: center;">
+                <img src="{{ patient.image.url }}" alt="{{ patient.first_name }} {{ patient.last_name }}"
+                  class="rounded-circle" style="max-width: 30%; max-height: 30%;">
+              </div>
+              <div style="text-align: center;">
+                <small class="text-muted">Treated <i class="fa-solid fa-check" style="color: #2ac71f;"></i></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

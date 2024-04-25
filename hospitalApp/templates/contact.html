@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container pt-5">
+    <section style="background-color : #398ff3; height : 650px;">
+        <div class="container py-5 mt-3">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="font-weight-light text-center py-3">Contact Us</h1>
+              <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+       
+                 <div class="row pt-3">
+                   <div class="col-lg-1 offset-1 col-md-2 col-sm-2">
+                     <span style="font-size: 30px; color: cadetblue"><i class="fas fa-map-marker-alt"></i></span>
+                   </div>
+       
+                    <div class="col-lg-10 col-md-9 col-sm-9">
+                      <h3 class="font-weight-light">Location</h3>
+                      <p>10157 Baraka Street
+                       <br>
+                        Kibaha, Dar es salaam
+                        <br>
+                        P.O.Box 23848
+                      </p>
+                   </div>
+                 </div>
+       
+                 <div class="row pt-3">
+                   <div class="col-lg-1 offset-1 col-md-2 col-sm-2">
+                     <span style="font-size: 30px; color: coral"><i class="fas fa-phone-volume"></i></span>
+                   </div>
+       
+                    <div class="col-lg-10 col-md-9 col-sm-9">
+                      <h3 class="font-weight-light">Call us</h3>
+                      <p>Godson Gosbert <br>  +255 757 900 133  <br>  Kibaha, Dar es salaam</p>
+                   </div>
+                 </div>
+       
+                </div>
+       
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                  <form method="post">
+                      {% csrf_token %}
+                    <div class="form-row">
+                       <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                         <label>Jina kamili</label>
+                         <input type="text" name="name" class="form-control" placeholder="Jina kamili" required>
+                       </div>
+       
+                       <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                         <label>Namba ya simu</label>
+                         <input type="text" name="contact" class="form-control" placeholder="Weka namba ya simu" required>
+                       </div>
+       
+                       <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                         <label>Email yako</label>
+                         <input type="email" name="email" class="form-control" placeholder="Email yako" required>
+                       </div>
+       
+                        <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                         <label>Subject</label>
+                         <input type="text" name="subject" class="form-control" placeholder="Enter Subject" required>
+                       </div>
+       
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                         <label>Message</label>
+                         <textarea name="message" class="form-control" placeholder="Tuma ujumbe....."></textarea>
+                       </div>
+       
+                        <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                          <input type="submit" value="Send" class="form-control btn btn-primary">
+                        </div>
+       
+                       <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                          <input type="reset" value="Clear" class="form-control btn btn-primary">
+                       </div>
+       
+                    </div>
+                  </form>
+                </div>
+              </div>
+       
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
+{% endblock%}

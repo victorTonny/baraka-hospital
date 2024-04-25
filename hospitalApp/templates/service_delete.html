@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container{
+        padding-top: 50px;
+    }
+</style>
+  <div class="container">
+    <h2>Delete Service</h2>
+  <p>Are you sure you want to delete "{{ service.name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+  <a href="{% url 'service-list' %}" class="btn btn-success">Cancel</a>
+  </div>
+{% endblock %}

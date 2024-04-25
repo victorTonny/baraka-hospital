@@ -1,0 +1,15 @@
+<!-- patient_update.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Update Patient</h2>
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary btn-block col-md-5 mt-3">Update Patient</button>
+    </form>
+    <a href="{% url 'patient-list' %}" class="btn btn-primary">Back to Patients</a>
+  </div>
+{% endblock %}

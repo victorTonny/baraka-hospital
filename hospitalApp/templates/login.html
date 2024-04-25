@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5" style="border-radius: 50%;">
+        <div class="card text-center">
+          <div class="card-header">
+            <h2>Login here</h2>
+          </div>
+          <div class="card-body">
+            <img src="{% static 'images/barakalogo.png' %}" alt="baraka" class="mx-auto d-block" style="width: 200px; height: 250px;">
+            <form method="post" class="form">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

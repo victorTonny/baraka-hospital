@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Dental Information List</h2>
+  <ul>
+    {% for info in dental_info %}
+      <li>
+        <a href="{% url 'dental-info-detail' info.pk %}">
+          Dental Information for {{ info.patient_name }} - Last Dental Visit: {{ info.last_dental_visit }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

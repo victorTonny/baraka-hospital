@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .img-card{
+    padding-top: 70px;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .image-container {
+    text-align: center;
+  }
+  .card {
+    cursor: pointer;
+  }
+
+</style>
+<script>
+  // JavaScript function to redirect to patient update page when the card is clicked
+  function redirectToUpdate(patientId) {
+    window.location.href = `/patient/${patientId}/update/`; // Replace with your actual URL pattern
+  }
+</script>
+  <div class="container img-card">
+    <h2>Patients List</h2>
+    <div class="row">
+      {% for patient in patients %}
+        <div class="col-md-4 mb-4">
+          <div class="card" onclick="redirectToUpdate('{{ patient.id }}')">
+            <div class="card-body">
+              <p class="card-title">Patient: {{ patient.first_name }} {{ patient.last_name }}</p>
+              <p class="card-text">Registered by: {{ patient.receptionist.first_name }} {{ patient.receptionist.last_name }}</p>
+              <p class="card-text">Registered at: {{ patient.registration_time }}</p>
+              <div style="text-align: center;">
+                <img src="{{ patient.image.url }}" alt="{{ patient.first_name }} {{ patient.last_name }}" class="rounded-circle" style="max-width: 90px; max-height: 90px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

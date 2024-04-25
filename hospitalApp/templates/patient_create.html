@@ -1,0 +1,15 @@
+<!-- patient_create.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Create Patient</h2>
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-3 mb-2">Create Patient</button>
+    </form>
+    <a href="{% url 'patient-list' %}" class="btn btn-primary">Back to Patients</a>
+  </div>
+{% endblock %}

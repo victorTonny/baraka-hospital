@@ -1,0 +1,15 @@
+<!-- patient_delete.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Delete Patient</h2>
+    <p>Are you sure you want to delete the patient '{{ patient.first_name }} {{ patient.last_name }}'?</p>
+    <form method="post" class="form">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'patient-list' %}" class="btn btn-secondary">Cancel</a>
+  </div>
+{% endblock %}
